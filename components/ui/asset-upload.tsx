@@ -7,18 +7,20 @@ import { CldUploadWidget } from "next-cloudinary";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
-interface ImageUploadProps {
+interface AssetUploadProps {
   disabled: boolean;
   onChange: (value: string) => void;
   onRemove: (value: string) => void;
   value: string[];
+  uploadPreset : string;
 }
 
-const ImageUpload: React.FC<ImageUploadProps> = ({
+const AssetUpload: React.FC<AssetUploadProps> = ({
   disabled,
   onChange,
   onRemove,
   value,
+  uploadPreset
 }) => {
   const [isMounted, setIsMounted] = useState(false);
 
@@ -78,4 +80,4 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
   );
 };
 
-export default ImageUpload;
+export default AssetUpload;

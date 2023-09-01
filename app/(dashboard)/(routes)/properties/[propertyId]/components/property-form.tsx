@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { AlertModal } from "@/components/modals/alert-modal";
-import ImageUpload from "@/components/ui/image-upload";
+import AssetUpload from "@/components/ui/asset-upload";
 
 const formSchema = z.object({
   name: z.string().min(1),
@@ -125,9 +125,33 @@ export const PropertyForm: React.FC<PropertyFormProps> = ({ initialData }) => {
               <FormItem>
                 <FormLabel>Images</FormLabel>
                 <FormControl>
-                  <ImageUpload
+                  <AssetUpload
                     value={field.value}
                     disabled={loading}
+                    uploadPreset="iaxv0k2v" // images preset
+                    onChange={(url) => field.onChange([...field.value, url])}
+                    onRemove={(url) =>
+                      field.onChange([
+                        ...field.value.filter((current) => current !== url),
+                      ])
+                    }
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="images"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Videos</FormLabel>
+                <FormControl>
+                  <AssetUpload
+                    value={field.value}
+                    disabled={loading}
+                    uploadPreset="wzjbn5vp" // videos preset
                     onChange={(url) => field.onChange([...field.value, url])}
                     onRemove={(url) =>
                       field.onChange([
