@@ -84,9 +84,9 @@ export async function POST(req: Request) {
 
 export async function GET(req: Request) {
   try {
-    const propterties = await prismadb.property.findMany();
+    const properties = await prismadb.property.findMany();
 
-    return NextResponse.json(propterties);
+    return NextResponse.json(properties);
   } catch (error) {
     console.log("[PROPERTY_GET]", error);
     return new NextResponse("Internal Error", { status: 500 });
