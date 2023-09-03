@@ -13,6 +13,7 @@ interface AssetUploadProps {
   onRemove: (value: string) => void;
   value: string[];
   uploadPreset : string;
+  assetName : string;
 }
 
 const AssetUpload: React.FC<AssetUploadProps> = ({
@@ -20,7 +21,8 @@ const AssetUpload: React.FC<AssetUploadProps> = ({
   onChange,
   onRemove,
   value,
-  uploadPreset
+  uploadPreset,
+  assetName
 }) => {
   const [isMounted, setIsMounted] = useState(false);
 
@@ -58,7 +60,7 @@ const AssetUpload: React.FC<AssetUploadProps> = ({
           </div>
         ))}
       </div>
-      <CldUploadWidget onUpload={onUpload} uploadPreset="iaxv0k2v">
+      <CldUploadWidget onUpload={onUpload} uploadPreset={uploadPreset}>
         {({ open }) => {
           const onClick = () => {
             open();
@@ -71,7 +73,7 @@ const AssetUpload: React.FC<AssetUploadProps> = ({
               onClick={onClick}
             >
               <ImagePlus className="h-4 w-4 mr-2" />
-              Upload an image
+              Upload {assetName}
             </Button>
           );
         }}

@@ -25,11 +25,11 @@ export function MobileMainNav() {
       label: "Properties",
       active: pathName === `/properties`,
     },
-    {
-      href: `/visits`,
-      label: "Visits",
-      active: pathName === `/visits`,
-    },
+    // {
+    //   href: `/visits`,
+    //   label: "Visits",
+    //   active: pathName === `/visits`,
+    // },
   ];
 
   const navigate = (url: string) => {

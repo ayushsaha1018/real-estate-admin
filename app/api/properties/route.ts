@@ -7,7 +7,18 @@ export async function POST(req: Request) {
     const { userId } = auth();
     const body = await req.json();
 
-    const { name, location, images } = body;
+    const {
+      name,
+      address,
+      images,
+      videos,
+      frontSize,
+      depthSize,
+      totalSize,
+      about,
+      price,
+      isAvailable,
+    } = body;
 
     if (!userId) {
       return new NextResponse("Unauthenticated", { status: 401 });
@@ -17,7 +28,7 @@ export async function POST(req: Request) {
       return new NextResponse("Name is required", { status: 400 });
     }
 
-    if (!location) {
+    if (!address) {
       return new NextResponse("Location is required", { status: 400 });
     }
 
@@ -25,11 +36,42 @@ export async function POST(req: Request) {
       return new NextResponse("Images are required", { status: 400 });
     }
 
+    if (videos.length < 1) {
+      return new NextResponse("Videos are required", { status: 400 });
+    }
+
+    if (!frontSize) {
+      return new NextResponse("frontSize are required", { status: 400 });
+    }
+
+    if (!depthSize) {
+      return new NextResponse("depthSize are required", { status: 400 });
+    }
+
+    if (!totalSize) {
+      return new NextResponse("totalSize are required", { status: 400 });
+    }
+
+    if (!about) {
+      return new NextResponse("about is required", { status: 400 });
+    }
+
+    if (!isAvailable) {
+      return new NextResponse("isAvailable is required", { status: 400 });
+    }
+
     const property = await prismadb.property.create({
       data: {
         name,
-        location,
+        address,
         images,
+        videos,
+        frontSize,
+        depthSize,
+        price,
+        totalSize,
+        about,
+        isAvailable,
       },
     });
 

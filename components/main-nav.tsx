@@ -14,11 +14,11 @@ export function MainNav({ className }: React.HTMLAttributes<HTMLElement>) {
       label: "Properties",
       active: pathName === `/properties`,
     },
-    {
-      href: `/visits`,
-      label: "Visits",
-      active: pathName === `/visits`,
-    },
+    // {
+    //   href: `/visits`,
+    //   label: "Visits",
+    //   active: pathName === `/visits`,
+    // },
   ];
 
   return (

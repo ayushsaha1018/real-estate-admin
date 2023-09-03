@@ -14,7 +14,9 @@ const PropertiesPage = async () => {
   const formattedProperties: PropertyColumn[] = properties.map((item) => ({
     id: item.id,
     name: item.name,
-    location: item.location,
+    address: item.address,
+    price: item.price,
+    isAvailable: item.isAvailable,
     createdAt: format(item.createdAt, "MMMM do, yyyy"),
   }));
 
