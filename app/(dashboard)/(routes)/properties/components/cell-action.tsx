@@ -27,14 +27,13 @@ const CellAction: React.FC<CellActionProps> = ({ data }) => {
     toast.success("Property id Copied to the clipboard.");
   };
   const router = useRouter();
-  const params = useParams();
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
 
   const onDelete = async () => {
     try {
       setLoading(true);
-      await axios.delete(`/api/${params?.storeId}/billboards/${data.id}`);
+      await axios.delete(`/api/properties/${data.id}`);
       router.refresh();
       toast.success("Property deleted.");
     } catch (error) {
