@@ -36,10 +36,6 @@ export async function POST(req: Request) {
       return new NextResponse("Images are required", { status: 400 });
     }
 
-    if (videos.length < 1) {
-      return new NextResponse("Videos are required", { status: 400 });
-    }
-
     if (!frontSize) {
       return new NextResponse("frontSize are required", { status: 400 });
     }
