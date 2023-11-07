@@ -24,7 +24,7 @@ export async function POST(
       return new NextResponse("propertyId is required", { status: 400 });
     }
 
-    if (email) {
+    if (!email) {
       return new NextResponse("email is required", { status: 400 });
     }
 
