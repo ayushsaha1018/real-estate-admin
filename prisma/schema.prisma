@@ -27,10 +27,12 @@ model Property {
 }
 
 model Review {
-  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
   propertyId  String
   name        String
   email       String
   description String
   rating      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }

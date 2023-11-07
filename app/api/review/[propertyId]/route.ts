@@ -92,6 +92,9 @@ export async function GET(
       where: {
         propertyId: params.propertyId,
       },
+      orderBy: {
+        createdAt: "desc",
+      },
     });
 
     return NextResponse.json(review);
