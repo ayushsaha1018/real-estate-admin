@@ -36,6 +36,16 @@ export async function POST(
       return new NextResponse("rating are required", { status: 400 });
     }
 
+    const property = await prismadb.property.findUnique({
+      where: {
+        id: params.propertyId,
+      },
+    });
+
+    if (!property) {
+      return new NextResponse("this property does not exist", { status: 400 });
+    }
+
     const review = await prismadb.review.create({
       data: {
         propertyId: params.propertyId,
@@ -49,7 +59,7 @@ export async function POST(
     return NextResponse.json(review);
   } catch (error) {
     console.log("[REVIEW_POST]", error);
-    return new NextResponse("Internal Error", { status: 500 });
+    return NextResponse.json(error);
   }
 }
 
@@ -66,6 +76,16 @@ export async function GET(
   try {
     if (!params.propertyId) {
       return new NextResponse("propertyId is required", { status: 400 });
+    }
+
+    const property = await prismadb.property.findUnique({
+      where: {
+        id: params.propertyId,
+      },
+    });
+
+    if (!property) {
+      return new NextResponse("this property does not exist", { status: 400 });
     }
 
     const review = await prismadb.review.findMany({
